@@ -8,7 +8,7 @@ interface IDislike {
 
 const Dislike = ({ reaction, count, addDislike }: IDislike) => {
   return (
-    <div className={styles.dislike} onClick={() => addDislike()}>
+    <button className={styles.dislike} onClick={() => addDislike()}>
       <svg
         width="28"
         height="25"
@@ -23,7 +23,7 @@ const Dislike = ({ reaction, count, addDislike }: IDislike) => {
         />
       </svg>
       <span className={styles.count}>{count}</span>
-    </div>
+    </button>
   );
 };
 

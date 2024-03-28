@@ -8,7 +8,7 @@ interface ILike {
 
 const Like = ({ reaction, count, addLike }: ILike) => {
   return (
-    <div className={styles.like} onClick={() => addLike()}>
+    <button className={styles.like} onClick={() => addLike()}>
       <svg
         width="28"
         height="25"
@@ -23,7 +23,7 @@ const Like = ({ reaction, count, addLike }: ILike) => {
         />
       </svg>
       <span className={styles.count}>{count}</span>
-    </div>
+    </button>
   );
 };
 
