@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
 import { fetchFilteredPost } from "../../redux/slices/posts";
 import { useDispatch, useSelector } from "react-redux";
+import { AppThunkDispatch } from "../../redux/store";
 
 import styles from "./SearchInput.module.scss";
 import ic_search from "./ic_search.svg";
 
+import { RootState } from "../../redux/store";
+
 const SearchInput = () => {
   const [value, setValue] = useState<string>("");
-  const filteredPost = useSelector((state) => state.posts.filteredPost);
-  const dispatch = useDispatch();
+  const filteredPost = useSelector(
+    (state: RootState) => state.posts.filteredPost
+  );
+  const dispatch = useDispatch<AppThunkDispatch>();
 
   const onWriteFilter = (value: string) => {
     setValue(value);

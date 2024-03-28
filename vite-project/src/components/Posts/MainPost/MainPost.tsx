@@ -6,26 +6,17 @@ import Dislike from "../../ui/Dislike/Dislike";
 
 import styles from "./MainPost.module.scss";
 
-interface IMainPost {
-  title: string;
-  body: string;
-  postId: number;
-  reactions: {
-    likes: number;
-    dislikes: number;
-    selfReaction: "like" | "dislike" | null;
-  };
-}
+import { IPost } from "../../../types/post";
 
-const MainPost = ({ title, body, postId, reactions }: IMainPost) => {
+const MainPost = ({ title, body, id, reactions }: IPost) => {
   const { addOneLike, addOneDislike } = usePutReaction();
 
   const addLike = () => {
-    addOneLike(postId);
+    addOneLike(id);
   };
 
   const addDislike = () => {
-    addOneDislike(postId);
+    addOneDislike(id);
   };
   return (
     <div className={styles.wrapper}>
@@ -51,7 +42,7 @@ const MainPost = ({ title, body, postId, reactions }: IMainPost) => {
         </div>
         <p className={styles.body}>{body}</p>
         <div className={styles.bot}>
-          <Link to={`/posts/${postId}`}>
+          <Link to={`/posts/${id}`}>
             <Button text="Читать далее" />
           </Link>
         </div>

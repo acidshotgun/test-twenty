@@ -6,10 +6,12 @@ import { Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage/MainPage";
 import PostPage from "./pages/PostPage/PostPage";
 
+import { AppThunkDispatch } from "./redux/store";
+
 import styles from "./App.module.scss";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppThunkDispatch>();
 
   useEffect(() => {
     dispatch(fetchPosts());

@@ -1,34 +1,26 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
-interface IPost {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
-  reactions: {
-    likes: number;
-    dislikes: number;
-    selfReaction: "like" | "dislike" | null;
-  };
-}
+import { IPost } from "../../types/post";
 
 interface IPostsState {
-  posts: IPost[] | null;
+  posts: IPost[];
   postsStatus: string;
-  filteredPost: IPost | [];
+  filteredPost: IPost[];
   filterStatus: string;
 }
 
 // Fetch posts
-export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const postsData = await fetch("https://jsonplaceholder.typicode.com/posts");
-  return await postsData.json();
-});
+export const fetchPosts = createAsyncThunk<IPost[], undefined>(
+  "posts/fetchPosts",
+  async () => {
+    const postsData = await fetch("https://jsonplaceholder.typicode.com/posts");
+    return await postsData.json();
+  }
+);
 
 // Fetch filtered post
 export const fetchFilteredPost = createAsyncThunk(
   "posts/fetchFilteredPost",
-  async (postName) => {
+  async (postName: string) => {
     const filteredPost = await fetch(
       `https://jsonplaceholder.typicode.com/posts?title=${postName}`
     );
@@ -37,7 +29,7 @@ export const fetchFilteredPost = createAsyncThunk(
 );
 
 const initialState: IPostsState = {
-  posts: null,
+  posts: [],
   postsStatus: "idle",
   filteredPost: [],
   filterStatus: "idle",

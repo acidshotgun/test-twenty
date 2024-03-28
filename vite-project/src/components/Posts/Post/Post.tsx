@@ -3,28 +3,19 @@ import Like from "../../ui/Like/Like";
 import Dislike from "../../ui/Dislike/Dislike";
 import Button from "../../ui/Button/Button";
 import usePutReaction from "../../../hooks/usePutReaction";
+import { IPost } from "../../../types/post";
 
 import styles from "./Post.module.scss";
 
-interface IPost {
-  title: string;
-  reactions: {
-    likes: number;
-    dislikes: number;
-    selfReaction: "like" | "dislike" | null;
-  };
-  postId: number;
-}
-
-const Post = ({ title, reactions, postId }: IPost) => {
+const Post = ({ title, reactions, id }: IPost) => {
   const { addOneLike, addOneDislike } = usePutReaction();
 
   const addLike = () => {
-    addOneLike(postId);
+    addOneLike(id);
   };
 
   const addDislike = () => {
-    addOneDislike(postId);
+    addOneDislike(id);
   };
 
   return (
@@ -47,7 +38,7 @@ const Post = ({ title, reactions, postId }: IPost) => {
               addDislike={addDislike}
             />
           </div>
-          <Link to={`/posts/${postId}`}>
+          <Link to={`/posts/${id}`}>
             <Button text="Читать далее" />
           </Link>
         </div>
