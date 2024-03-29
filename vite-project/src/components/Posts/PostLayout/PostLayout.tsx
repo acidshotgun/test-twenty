@@ -39,7 +39,7 @@ const PostLayout = () => {
               reactions={mainPost.reactions}
             />
             <div className={styles.columns}>
-              <ul className={styles.column}>
+              <div className={styles.column}>
                 {leftColumn?.map((post: IPost) => {
                   return (
                     <Post
@@ -50,8 +50,8 @@ const PostLayout = () => {
                     />
                   );
                 })}
-              </ul>
-              <ul className={styles.column}>
+              </div>
+              <div className={styles.column}>
                 {rightColumn?.map((post: IPost) => {
                   return (
                     <Post
@@ -62,7 +62,7 @@ const PostLayout = () => {
                     />
                   );
                 })}
-              </ul>
+              </div>
             </div>
           </>
         )

@@ -19,7 +19,7 @@ const Post = ({ title, reactions, id }: IPost) => {
   };
 
   return (
-    <li className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <div className={styles.image}>
         <img src="https://placehold.co/558x273" alt="img" />
       </div>
@@ -43,7 +43,7 @@ const Post = ({ title, reactions, id }: IPost) => {
           </Link>
         </div>
       </div>
-    </li>
+    </div>
   );
 };
 
