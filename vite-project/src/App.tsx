@@ -19,10 +19,12 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/posts/:postId" element={<PostPage />} />
-      </Routes>
+      <div className={styles.container}>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/posts/:postId" element={<PostPage />} />
+        </Routes>
+      </div>
     </div>
   );
 }
